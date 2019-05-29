@@ -1,8 +1,7 @@
 {
   "name": "dropbox-file-picker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Custom file/folder chooser for Dropbox API",
-  "private": true,
   "main": "dist/main.js",
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
@@ -24,5 +23,19 @@
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.4.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brain0verfl0w/dropbox-file-picker.git"
+  },
+  "keywords": [
+    "dropbox",
+    "picker",
+    "electron",
+    "chooser"
+  ],
+  "bugs": {
+    "url": "https://github.com/brain0verfl0w/dropbox-file-picker/issues"
+  },
+  "homepage": "https://github.com/brain0verfl0w/dropbox-file-picker#readme"
 }
