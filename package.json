@@ -1,0 +1,28 @@
+{
+  "name": "dropbox-file-picker",
+  "version": "1.0.0",
+  "description": "Custom file/folder chooser for Dropbox API",
+  "private": true,
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "webpack-dev-server --open --mode development",
+    "build": "webpack --mode production"
+  },
+  "author": "brain0verfl0w",
+  "license": "MIT",
+  "dependencies": {
+    "dropbox": "^4.0.17",
+    "preact": "^8.4.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^2.1.1",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.4.1"
+  }
+}
