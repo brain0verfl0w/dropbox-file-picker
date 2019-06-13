@@ -20,13 +20,12 @@ class DropboxFilePicker extends Component {
             selectedEntries: [],
             allowedExtensions: null,
         };
-        this.dropbox = new Dropbox({ accessToken: this.props.accessToken });
+        this.dropbox = new Dropbox({ accessToken: this.props.accessToken, fetch });
 
         if (this.props.allowedExtensions) {
-            const allowedExtensions = this.props.allowedExtensions.map((extension) => {
+            this.state.allowedExtensions = this.props.allowedExtensions.map((extension) => {
                 return extension[0] === '.' ? extension.substring(1) : extension;
             });
-            this.state.allowedExtensions = allowedExtensions;
         }
     }
 
@@ -52,7 +51,7 @@ class DropboxFilePicker extends Component {
         const pathArray = path.split('/');
         pathArray.shift();
         pathArray.forEach((name) => {
-            pathAccumulator += `/${name}`
+            pathAccumulator += `/${name}`;
             breadcrumbs.push({
                 path: pathAccumulator,
                 name,
@@ -242,7 +241,7 @@ class DropboxFilePicker extends Component {
         }
         return (<div className="dropbox-loader-modal">
             <div className="dropbox-loader">
-                <div className="lds-dual-ring"></div>
+                <div className="lds-dual-ring" />
             </div>
         </div>)
     }
@@ -290,7 +289,7 @@ class DropboxFilePicker extends Component {
     }
 }
 
-const open = settings => new Promise((resolve, reject) => {
+const open = settings => new Promise((resolve) => {
     render(
         <DropboxFilePicker
             {...settings}
