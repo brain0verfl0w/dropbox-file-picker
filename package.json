@@ -1,8 +1,8 @@
 {
   "name": "dropbox-file-picker",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Custom file/folder chooser for Dropbox API",
-  "main": "src/index.js",
+  "main": "dist/main.js",
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production"
