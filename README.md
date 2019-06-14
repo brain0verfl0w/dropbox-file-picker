@@ -1,5 +1,12 @@
 # dropbox-file-picker
-Simple file/folder picker for Dropbox API with browser and Electron support
+Simple Dropbox chooser replacement (files and folders picker) with browser and Electron support.
+
+Currently has only supports list layout.
+
+Features:
+- Image files previews
+- Ability to select multiple files & folders at the same time
+
 
 Installation:
 
