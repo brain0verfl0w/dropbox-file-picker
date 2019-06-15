@@ -8,6 +8,10 @@
     z-index: 10000;
 }
 
+.dropbox-modal button:focus {
+    outline: 0;
+}
+
 .dropbox-file-picker {
     font-family: 'Helvetica', 'Arial', sans-serif;
     font-weight: 100;
@@ -26,12 +30,12 @@
 }
 
 .dropbox-modal-body {
-    height: 480px;
+    height: 520px;
     position: relative;
 }
 
 .dropbox-entries-list {
-    height: 480px;
+    max-height: 520px;
     overflow-y: scroll;
     overflow-x: auto;
 }
@@ -52,6 +56,7 @@
 .dropbox-folder-entry {
     display: flex;
     align-items: center;
+    position: relative;
     line-height: 50px;
     border-bottom: 1px solid #eee;
     padding: 0 5px;
@@ -119,8 +124,8 @@
 
 .dropbox-button-panel {
     width: 100%;
-    height: 70px;
-    border-top: 1px solid #aaa;
+    height: 40px;
+    background-color: #0083f5;
     text-align: right;
 }
 
@@ -129,8 +134,9 @@
     width: 200px;
     text-align: left;
     float: left;
-    line-height: 70px;
+    line-height: 40px;
     margin: 0 15px;
+    color: #fff;
 }
 
 .dropbox-choose-buttons {
@@ -138,12 +144,12 @@
 }
 
 .dropbox-choose-buttons > .dropbox-btn {
-    margin-top: 17px;
+    margin: 0;
 }
 
 .dropbox-btn {
     min-width: 100px;
-    height: 35px;
+    height: 40px;
     display: inline-block;
     border: 0;
     border-radius: 3px;
@@ -151,9 +157,13 @@
     background: linear-gradient(to bottom, #0082f4, #0082ff);
     margin: 10px 5px;
     color: #fff;
-    font-weight: 600;
     font-size: 12px;
     cursor: pointer;
+    font-weight: 200;
+}
+
+.dropbox-btn-accent {
+    font-weight: 600;
 }
 
 .dropbox-btn-hollow {
@@ -162,20 +172,38 @@
     color: #444;
 }
 
+.dropbox-btn-empty {
+    background: transparent;
+    border: 1px solid transparent;
+    color: #fff;
+}
+
 .dropbox-chooser-header {
-    height: 50px;
-    border-bottom: 1px solid #aaa;
+    box-sizing: border-box;
+    display: flex;
+    height: 40px;
+    background-color: #0083f5;
+}
+
+.dropbox-chooser-breadcrumbs {
+    flex-grow: 1;
+    box-sizing: border-box;
+}
+
+.dropbox-chooser-options-panel {
+    box-sizing: border-box;
+    display: flex;
 }
 
 .dropbox-breadcrumbs {
     list-style-type: none;
-    line-height: 50px;
-    margin: 0 20px;
+    line-height: 40px;
+    margin: 0 8px;
     padding: 0;
 }
 
 .dropbox-breadcrumb-item {
-    color: #000;
+    color: #fff;
     display: inline;
     font-size: 13px;
 }
@@ -191,11 +219,14 @@
 .dropbox-breadcrumb-item > a {
     text-decoration: none;
     color: #0082f4;
+    background-color: #fff;
+    padding: 5px;
 }
 
 .dropbox-breadcrumb-item:last-child > a {
     pointer-events: none;
-    color: #000;
+    color: #fff;
+    background-color: transparent;
 }
 
 .dropbox-loader-modal {
@@ -206,6 +237,7 @@
     bottom: 0;
     background-color: rgba(255,255,255, 0.7);
     pointer-events: none;
+    z-index: 10;
 }
 
 .dropbox-loader {
@@ -259,4 +291,76 @@
 @keyframes fadein {
     from { opacity: 0.2; }
     to   { opacity: 1; }
+}
+
+.dropbox-layout-button {
+    width: 32px;
+    height: 32px;
+    border: 0;
+    display: inline-block;
+    align-self: center;
+    cursor: pointer;
+    margin-right: 10px;
+    background-color: transparent;
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.dropbox-button-selected {
+    background-color: rgba(0,0,0,0.25);
+}
+
+.dropbox-grid-icon {
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' %3F%3E%3Csvg fill='white' height='32' id='grid' viewBox='0 0 32 32' width='32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d=' M4 4 L10 4 L10 10 L4 10z M13 4 L19 4 L19 10 L13 10z M22 4 L28 4 L28 10 L22 10z M4 13 L10 13 L10 19 L4 19z M13 13 L19 13 L19 19 L13 19z M22 13 L28 13 L28 19 L22 19z M4 22 L10 22 L10 28 L4 28z M13 22 L19 22 L19 28 L13 28z M22 22 L28 22 L28 28 L22 28z '/%3E%3C/svg%3E");
+}
+
+.dropbox-list-icon {
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' %3F%3E%3Csvg fill='white' height='32' id='list' viewBox='0 0 32 32' width='32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d=' M3 8 A3 3 0 0 0 9 8 A3 3 0 0 0 3 8 M12 6 L28 6 L28 10 L12 10z M3 16 A3 3 0 0 0 9 16 A3 3 0 0 0 3 16 M12 14 L28 14 L28 18 L12 18z M3 24 A3 3 0 0 0 9 24 A3 3 0 0 0 3 24 M12 22 L28 22 L28 26 L12 26z '/%3E%3C/svg%3E");
+}
+
+.dropbox-entries-list.dropbox-grid-layout {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.dropbox-grid-layout .dropbox-entry-icon {
+    width: 100%;
+    height: 150px;
+    border-radius: 0;
+    margin: 0;
+    background-size: contain;
+}
+
+.dropbox-grid-layout .dropbox-entry-name {
+    display: block;
+    color: #000;
+    bottom: 0;
+    left: 0;
+    margin: 5px auto;
+    width: 100%;
+    text-align: center;
+}
+
+.dropbox-grid-layout .dropbox-entry-full-name {
+    display: block;
+    position: relative;
+}
+
+.dropbox-grid-layout .dropbox-folder-entry {
+    line-height: normal;
+    margin: 5px;
+    padding: 0;
+    border: 0;
+}
+
+.dropbox-grid-layout .dropbox-entry-preview {
+    background-size: cover;
+}
+
+.dropbox-grid-layout .dropbox-entry-checkbox {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    z-index: 2;
 }

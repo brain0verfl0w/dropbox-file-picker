@@ -19,6 +19,7 @@ class DropboxFilePicker extends Component {
             isLoading: false,
             selectedEntries: [],
             allowedExtensions: null,
+            layoutMode: 'list',
         };
         this.dropbox = new Dropbox({ accessToken: this.props.accessToken, fetch });
 
@@ -87,12 +88,16 @@ class DropboxFilePicker extends Component {
         const files = list.entries.filter(entry =>
             entry['.tag'] === 'file' && DROPBOX_SUPPORTED_THUMBNAIL_IMAGES.includes(this.getExtension(entry.name)));
         const fileChunks = splitArrayToChunks(files);
+
+        const size = this.props.previewSettings &&
+        this.props.previewSettings.size ? this.props.previewSettings.size : DROPBOX_PREVIEW_QUALITY;
+
         fileChunks.forEach((files) => {
             this.dropbox.filesGetThumbnailBatch({
                 entries: files.map(entry => ({
                     path: entry.id,
                     format: { '.tag': DROPBOX_PREVIEW_IMAGE_FORMAT },
-                    size: { '.tag': DROPBOX_PREVIEW_QUALITY },
+                    size: { '.tag': size },
                     mode: { '.tag': 'strict' },
                 })),
             }).then(result => this.applyThumbnails(result));
@@ -225,14 +230,27 @@ class DropboxFilePicker extends Component {
     }
 
     renderChooserInfo() {
-        if (!this.props.isMultiple) {
+        if (!this.props.isMultiple || this.props.hideCountLabel) {
             return false;
         }
-        return `You've selected ${this.state.selectedEntries.length} files`;
+        return `You've selected ${this.state.selectedEntries.length} entries`;
     }
 
+    //dropbox-grid-layout .dropbox-button-selected
     renderHeader() {
-        return (<div className="dropbox-chooser-header">{this.renderBreadcrumbs()}</div>)
+        return (<div className="dropbox-chooser-header">
+            <div className="dropbox-chooser-breadcrumbs">{this.renderBreadcrumbs()}</div>
+            <div className="dropbox-chooser-options-panel">
+                <button
+                    className={`dropbox-layout-button dropbox-grid-icon ${this.state.layoutMode === 'grid' ? 'dropbox-button-selected' : ''}`}
+                    onClick={() => this.setState({ layoutMode: 'grid' })}
+                />
+                <button
+                    className={`dropbox-layout-button dropbox-list-icon ${this.state.layoutMode === 'list' ? 'dropbox-button-selected' : ''}`}
+                    onClick={() => this.setState({ layoutMode: 'list' })}
+                />
+            </div>
+        </div>)
     }
 
     renderLoader() {
@@ -250,8 +268,8 @@ class DropboxFilePicker extends Component {
         const chooseButtonClasses = this.state.selectedEntries.length ? '' : 'dropbox-not-selectable';
         return (
             <div className="dropbox-choose-buttons">
-                <button className="dropbox-btn dropbox-btn-hollow" onClick={() => this.destroy()}>Cancel</button>
-                <button className={`dropbox-btn ${chooseButtonClasses}`} onClick={() => this.select()}>Choose</button>
+                <button className="dropbox-btn dropbox-btn-empty" onClick={() => this.destroy()}>Cancel</button>
+                <button className={`dropbox-btn ${chooseButtonClasses} dropbox-btn-empty dropbox-btn-accent`} onClick={() => this.select()}>Choose</button>
             </div>);
     }
 
@@ -271,7 +289,7 @@ class DropboxFilePicker extends Component {
                 {this.renderHeader()}
                 <div className="dropbox-modal-body">
                     {this.renderLoader()}
-                    <div className="dropbox-entries-list">
+                    <div className={`dropbox-entries-list dropbox-${this.state.layoutMode}-layout`}>
                         {this.state.list.entries.map(entry => this.renderItem(entry))}
                     </div>
                 </div>
