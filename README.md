@@ -1,6 +1,9 @@
 # dropbox-file-picker
 Simple Dropbox chooser replacement (files and folders picker) with browser and Electron support.
 
+![alt text](https://raw.githubusercontent.com/brain0verfl0w/dropbox-file-picker/graphics/images/list-view.png)
+
+![alt text](https://raw.githubusercontent.com/brain0verfl0w/dropbox-file-picker/graphics/images/grid-view.png)
 
 Features:
 - Independent from default Dropbox chooser
