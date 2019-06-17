@@ -127,11 +127,12 @@
     display: none;
 }
 
-.dropbox-button-panel {
+.dropbox-chooser-footer {
     width: 100%;
     height: 40px;
     background-color: #0083f5;
     text-align: right;
+    border-top: 1px solid #fff;
 }
 
 .dropbox-info-panel {
@@ -145,21 +146,18 @@
 }
 
 .dropbox-choose-buttons {
-    margin-right: 10px;
 }
 
 .dropbox-choose-buttons > .dropbox-btn {
-    margin: 0;
+    margin: 5px;
 }
 
 .dropbox-btn {
-    min-width: 60px;
-    height: 40px;
+    min-width: 75px;
+    height: 30px;
     display: inline-block;
     border: 0;
-    border-radius: 3px;
-    background: #0082f4;
-    background: linear-gradient(to bottom, #0082f4, #0082ff);
+    border-radius: 0;
     margin: 10px 5px;
     color: #fff;
     font-size: 12px;
@@ -168,11 +166,13 @@
 }
 
 .dropbox-btn-accent {
-    font-weight: 600;
+    background-color: #fff;
+    color: #0082f4;
+    border: 1px solid #fff;
 }
 
 .dropbox-btn-hollow {
-    background:transparent;
+    background: transparent;
     border: 1px solid #777;
     color: #444;
 }
@@ -188,6 +188,7 @@
     display: flex;
     height: 40px;
     background-color: #0083f5;
+    border-bottom: 1px solid #fff;
 }
 
 .dropbox-chooser-breadcrumbs {

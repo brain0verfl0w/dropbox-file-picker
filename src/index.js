@@ -327,7 +327,7 @@ class DropboxFilePicker extends Component {
                     {this.state.text.cancel}
                 </button>
                 <button
-                    className={`dropbox-btn ${chooseButtonClasses} dropbox-btn-empty dropbox-btn-accent`}
+                    className={`dropbox-btn ${chooseButtonClasses} dropbox-btn-accent`}
                     onClick={() => this.select()}
                 >
                     {this.state.text.choose}
@@ -359,7 +359,7 @@ class DropboxFilePicker extends Component {
                         {this.state.list.entries.map(entry => this.renderItem(entry))}
                     </div>
                 </div>
-                <div className="dropbox-button-panel">
+                <div className="dropbox-chooser-footer">
                     <div className="dropbox-info-panel">
                         {this.renderChooserInfo()}
                     </div>
