@@ -1,8 +1,10 @@
 # dropbox-file-picker
 Simple Dropbox chooser replacement (files and folders picker) with browser and Electron support.
 
+##### List layout example:
 ![alt text](https://raw.githubusercontent.com/brain0verfl0w/dropbox-file-picker/graphics/images/list-view.png)
 
+##### Grid layout example:
 ![alt text](https://raw.githubusercontent.com/brain0verfl0w/dropbox-file-picker/graphics/images/grid-view.png)
 
 #### Features:
@@ -18,14 +20,17 @@ Simple Dropbox chooser replacement (files and folders picker) with browser and E
 
 `npm i dropbox-file-picker`
 
+#### Notes:
+- Currently works only as modal window
+- No ability to upload files/authorize/create folders (will be implemented later)
 
 #### Usage:
 ##### Minimal setup:
 ```javascript
 import dropboxPicker from 'dropbox-file-picker';
 
-dropboxPicker.open({ accessToken: 'dropbox_access_token_here' }) // you need only accessToken
-    .then(result => onSuccess(result));
+dropboxPicker.open({ accessToken: 'dropbox_access_token_here' }) // user's accessToken
+    .then(result => onSuccess(result)); // promise with selected files/folders info
 ```
 
 ##### Advanced setup:
@@ -55,10 +60,9 @@ dropboxPicker.open({
     }
 })
 .then(
-    result => onSuccess(result), // promise on window selection cancel
-    result => onClose(result) // promise with selected files info
+    result => onSuccess(result), // promise with selected files/folders info
+    result => onClose(result) // promise on window selection cancel
 );
-.then();
 ```
 
 Supported previews size: `w32h32` `w64h64` `w128h128` `w256h256` `w480h320` `w640h480` `w960h640` `w1024h768` `w2048h1536`
